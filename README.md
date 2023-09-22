@@ -28,9 +28,16 @@ This project is my first try at building an interpreter. This `rinha` interprete
 
 # Steps to run interpreter
 
+## Locally:
+
 1. Create a new .rinha file (see examples directory for some examples)
 2. Parse the content of that file into the json AST using `rinha examples/int.rinha > examples/int.json` (install rust/rinha before this)
 3. Run this interpreter using `go run . ./examples/<filename>.json`
+
+## Using docker:
+
+1. Build image: `docker build -t rinha .`
+2. Run container: `docker run -it rinha examples/<file>.json`
 
 # Example
 
