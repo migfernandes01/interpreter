@@ -1,0 +1,1 @@
+{"name":"examples/int.rinha","expression":{"kind":"Print","value":{"kind":"Int","value":10,"location":{"start":6,"end":8,"filename":"examples/int.rinha"}},"location":{"start":0,"end":9,"filename":"examples/int.rinha"}},"location":{"start":0,"end":9,"filename":"examples/int.rinha"}}

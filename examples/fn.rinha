@@ -1,0 +1,5 @@
+let messageFn = fn (message) => {
+  message
+};
+
+print("message: " + messageFn("output of message function"))

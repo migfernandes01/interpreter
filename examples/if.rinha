@@ -1,0 +1,5 @@
+if(false) {
+    print("true condition")
+} else {
+    print("false condition")
+}
