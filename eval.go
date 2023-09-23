@@ -42,8 +42,6 @@ func eval(scope Scope, termData Term) Term {
 		rhs := eval(scope, binaryValue.RHS)
 		op := BinaryOp(binaryValue.Op)
 
-		// fmt.Printf("lhs: %v, rhs: %v, op: %v\n", lhs, rhs, op)
-
 		switch op {
 		case Add:
 			if intLhs, ok := lhs.(*big.Int); ok {
@@ -59,7 +57,7 @@ func eval(scope Scope, termData Term) Term {
 					return fmt.Sprintf("%s%s", strLhs, strRhs)
 				}
 			}
-		case Sub: // TODO: check if this is correct (with 3 numbers)
+		case Sub:
 			intLhs, intRhs := convertToInt(lhs, rhs)
 			return new(big.Int).Sub(intLhs, intRhs)
 		case Mul:
@@ -73,7 +71,7 @@ func eval(scope Scope, termData Term) Term {
 			return new(big.Int).Rem(intLhs, intRhs)
 		case Eq:
 			return fmt.Sprintf("%v", lhs) == fmt.Sprintf("%v", rhs)
-		case Neq: // TODO: check if this is correct
+		case Neq:
 			return fmt.Sprintf("%v", lhs) != fmt.Sprintf("%v", rhs)
 		case Lt:
 			intLhs, intRhs := convertToInt(lhs, rhs)
@@ -91,10 +89,10 @@ func eval(scope Scope, termData Term) Term {
 			intLhs, intRhs := convertToInt(lhs, rhs)
 			comp := intLhs.Cmp(intRhs)
 			return comp >= 0
-		case And: // TODO: check if this is correct
+		case And:
 			boolLhs, boolRhs := convertToBool(lhs, rhs)
 			return boolLhs && boolRhs
-		case Or: // TODO: check if this is correct
+		case Or:
 			boolLhs, boolRhs := convertToBool(lhs, rhs)
 			return boolLhs || boolRhs
 		}
@@ -144,7 +142,7 @@ func eval(scope Scope, termData Term) Term {
 		secondEl := tuple.Second
 		secondElValue := eval(scope, secondEl)
 		return secondElValue
-	case KindCall: // WIP - needs test
+	case KindCall:
 		var callValue Call
 		decode(termData, &callValue)
 
@@ -175,7 +173,7 @@ func eval(scope Scope, termData Term) Term {
 		}
 
 		return value
-	case KindFunction: // WIP
+	case KindFunction:
 		var function Function
 		decode(termData, &function)
 
